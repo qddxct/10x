@@ -1,0 +1,64 @@
+name: backend
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/backend.yml'
+  pull_request:
+    paths:
+      - 'backend/**'
+      - '.github/workflows/backend.yml'
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: rootpass
+          MYSQL_DATABASE: sporttery_10x
+          MYSQL_USER: sporttery
+          MYSQL_PASSWORD: sporttery_pass
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h localhost -uroot -prootpass"
+          --health-interval=5s --health-timeout=5s --health-retries=20
+    env:
+      MYSQL_HOST: 127.0.0.1
+      MYSQL_PORT: 3306
+      MYSQL_USER: sporttery
+      MYSQL_PASSWORD: sporttery_pass
+      MYSQL_DATABASE: sporttery_10x
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+      - run: pip install --upgrade pip
+      - run: pip install -r requirements.txt
+      - name: Wait for MySQL
+        run: |
+          for i in {1..30}; do
+            if mysqladmin ping -h 127.0.0.1 -uroot -prootpass --silent; then break; fi
+            sleep 2
+          done
+      - run: ruff check .
+      - run: black --check .
+      - name: Alembic upgrade head
+        run: alembic upgrade head
+      - name: Seed default data
+        run: python -m app.scripts.seed
+      - name: Alembic downgrade base (roundtrip)
+        run: alembic downgrade base
+      - name: Alembic upgrade head (final)
+        run: alembic upgrade head
+      - run: pytest -v

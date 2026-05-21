@@ -1,0 +1,36 @@
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: rgb(51 65 85);
+  color: rgb(203 213 225);
+  font-size: 10px;
+  font-weight: 600;
+  margin-left: 4px;
+  border: 0;
+  cursor: help;
+  padding: 0;
+}
+
+.trigger:hover {
+  background: rgb(71 85 105);
+}
+
+.content {
+  background: rgb(15 23 42);
+  color: rgb(226 232 240);
+  font-size: 12px;
+  line-height: 1.4;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid rgb(51 65 85);
+  max-width: 260px;
+  z-index: 100;
+}
+
+.arrow {
+  fill: rgb(15 23 42);
+}

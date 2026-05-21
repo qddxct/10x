@@ -1,0 +1,854 @@
+.container {
+  min-height: calc(100vh - 3.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.25rem;
+  background:
+    linear-gradient(180deg, rgb(12 13 15) 0%, rgb(18 18 20) 42%, rgb(10 10 11) 100%);
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 1rem;
+  border: 1px solid rgb(63 63 70);
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  background:
+    linear-gradient(135deg, rgb(24 24 27 / 0.96), rgb(16 16 18 / 0.98)),
+    linear-gradient(90deg, rgb(245 158 11 / 0.18), rgb(20 184 166 / 0.1));
+  box-shadow: 0 18px 60px rgb(0 0 0 / 0.28);
+}
+
+.heroMain {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.375rem;
+  min-width: 18rem;
+}
+
+.kicker {
+  color: rgb(217 119 6);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.subtitle {
+  color: rgb(161 161 170);
+  font-size: 0.875rem;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(5.75rem, 1fr));
+  gap: 0.625rem;
+  min-width: min(32rem, 100%);
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5rem;
+  border: 1px solid rgb(82 82 91);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  background: rgb(9 9 11 / 0.56);
+}
+
+.metric span {
+  color: rgb(161 161 170);
+  font-size: 0.75rem;
+}
+
+.metric strong {
+  color: rgb(250 250 250);
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border: 1px solid rgb(39 39 42);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  background: rgb(24 24 27 / 0.84);
+}
+
+.comboPanel {
+  display: grid;
+  grid-template-columns: 14rem 1fr;
+  gap: 1rem;
+  border: 1px solid rgb(63 63 70);
+  border-radius: 0.5rem;
+  padding: 0.875rem;
+  background:
+    linear-gradient(135deg, rgb(24 24 27 / 0.92), rgb(9 9 11 / 0.9)),
+    linear-gradient(90deg, rgb(217 119 6 / 0.1), rgb(20 184 166 / 0.08));
+}
+
+.comboHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.25rem;
+}
+
+.sectionEyebrow {
+  color: rgb(20 184 166);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.sectionTitle {
+  color: rgb(250 250 250);
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.comboHint {
+  color: rgb(161 161 170);
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+.comboGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.comboCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-height: 10rem;
+  border: 1px solid rgb(63 63 70);
+  border-radius: 0.5rem;
+  padding: 0.875rem;
+  background: rgb(9 9 11 / 0.62);
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+.comboCard:hover {
+  transform: translateY(-1px);
+  background: rgb(24 24 27 / 0.92);
+}
+
+.comboPrimary {
+  border-color: rgb(20 184 166 / 0.56);
+}
+
+.comboSecondary {
+  border-color: rgb(217 119 6 / 0.48);
+}
+
+.comboTopline,
+.comboFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.comboTopline span {
+  color: rgb(244 244 245);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.comboTopline > div {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.comboTopline small {
+  color: rgb(161 161 170);
+  font-size: 0.68rem;
+}
+
+.comboTopline strong {
+  min-width: 4rem;
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  background: rgb(20 184 166 / 0.16);
+  color: rgb(153 246 228);
+  text-align: center;
+  font-size: 1.05rem;
+}
+
+.comboMetaStrip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.comboMetaStrip span {
+  border: 1px solid rgb(63 63 70);
+  border-radius: 0.45rem;
+  padding: 0.2rem 0.45rem;
+  background: rgb(24 24 27 / 0.72);
+  color: rgb(212 212 216);
+  font-size: 0.72rem;
+}
+
+.comboLegs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.comboLeg {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.75rem;
+  align-items: center;
+  border-top: 1px solid rgb(39 39 42);
+  padding-top: 0.5rem;
+}
+
+.comboLeg:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.comboLeg strong {
+  display: block;
+  color: rgb(250 250 250);
+  font-size: 0.86rem;
+  font-weight: 650;
+}
+
+.comboMatchLink {
+  display: block;
+  width: fit-content;
+  color: rgb(250 250 250);
+  font-size: 0.86rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.comboMatchLink:hover,
+.matchLink:hover {
+  color: rgb(153 246 228);
+  text-decoration: underline;
+  text-underline-offset: 0.18rem;
+}
+
+.comboLeg span {
+  display: block;
+  margin-top: 0.15rem;
+  color: rgb(161 161 170);
+  font-size: 0.74rem;
+}
+
+.comboLegSignal {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.comboLegSignal span,
+.comboLegSignal em,
+.comboLegSignal b {
+  min-width: 2.25rem;
+  border-radius: 0.45rem;
+  padding: 0.2rem 0.4rem;
+  text-align: center;
+  font-size: 0.75rem;
+  font-style: normal;
+}
+
+.comboLegSignal span {
+  border: 1px solid rgb(217 119 6 / 0.42);
+  background: rgb(120 53 15 / 0.22);
+  color: rgb(253 230 138);
+}
+
+.comboLegSignal b {
+  border: 1px solid rgb(82 82 91);
+  background: rgb(39 39 42);
+  color: rgb(244 244 245);
+}
+
+.comboLegSignal em {
+  min-width: 2.75rem;
+  border: 1px solid rgb(20 184 166 / 0.44);
+  background: rgb(15 118 110 / 0.18);
+  color: rgb(153 246 228);
+}
+
+.comboFooter {
+  margin-top: auto;
+  border-top: 1px solid rgb(39 39 42);
+  padding-top: 0.625rem;
+}
+
+.comboFooter span {
+  color: rgb(161 161 170);
+  font-size: 0.75rem;
+}
+
+.comboFooter strong {
+  color: rgb(253 230 138);
+  font-size: 0.875rem;
+}
+
+.comboEmpty {
+  display: flex;
+  align-items: center;
+  min-height: 6rem;
+  border: 1px dashed rgb(63 63 70);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  color: rgb(161 161 170);
+  background: rgb(9 9 11 / 0.5);
+}
+
+.tabs,
+.controls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.tab,
+.tabActive {
+  min-height: 2.25rem;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  padding: 0.375rem 0.875rem;
+  background: transparent;
+  color: rgb(161 161 170);
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.tab:hover {
+  background: rgb(39 39 42);
+  color: rgb(244 244 245);
+}
+
+.tabActive {
+  border-color: rgb(217 119 6 / 0.42);
+  background: rgb(120 53 15 / 0.34);
+  color: rgb(253 230 138);
+}
+
+.button,
+.buttonPrimary {
+  min-height: 2.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  border: 1px solid rgb(63 63 70);
+  border-radius: 0.5rem;
+  background: rgb(39 39 42);
+  color: rgb(244 244 245);
+  padding: 0.375rem 0.85rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.button:hover {
+  border-color: rgb(113 113 122);
+  background: rgb(63 63 70);
+}
+
+.button:disabled,
+.buttonPrimary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.buttonPrimary {
+  border-color: rgb(20 184 166 / 0.55);
+  background: rgb(15 118 110 / 0.32);
+  color: rgb(153 246 228);
+}
+
+.buttonPrimary:hover {
+  background: rgb(15 118 110 / 0.46);
+}
+
+.input,
+.dateControl {
+  min-height: 2.25rem;
+  border: 1px solid rgb(63 63 70);
+  border-radius: 0.5rem;
+  background: rgb(9 9 11);
+  color: rgb(244 244 245);
+  font-size: 0.875rem;
+}
+
+.input {
+  min-width: 16rem;
+  padding: 0.375rem 0.625rem;
+}
+
+.textarea {
+  border: 1px solid rgb(63 63 70);
+  border-radius: 0.5rem;
+  padding: 0.625rem;
+  background: rgb(9 9 11);
+  color: rgb(244 244 245);
+  font-size: 0.875rem;
+}
+
+.dateControl {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0 0.625rem;
+  color: rgb(161 161 170);
+}
+
+.dateControl input {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: rgb(244 244 245);
+  font: inherit;
+}
+
+.tableShell {
+  overflow: hidden;
+  border: 1px solid rgb(39 39 42);
+  border-radius: 0.5rem;
+  background: rgb(18 18 20 / 0.94);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.table th {
+  height: 2.75rem;
+  border-bottom: 1px solid rgb(63 63 70);
+  background: rgb(9 9 11);
+  color: rgb(161 161 170);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: left;
+}
+
+.table th,
+.table td {
+  padding: 0.625rem 0.875rem;
+  vertical-align: middle;
+}
+
+.table td {
+  border-bottom: 1px solid rgb(39 39 42);
+  color: rgb(228 228 231);
+}
+
+.table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.tableRow,
+.recommendedRow {
+  cursor: pointer;
+  transition:
+    background 140ms ease,
+    box-shadow 140ms ease;
+}
+
+.tableRow:hover {
+  background: rgb(39 39 42 / 0.74);
+}
+
+.recommendedRow {
+  background: linear-gradient(90deg, rgb(20 184 166 / 0.11), transparent 62%);
+  box-shadow: inset 3px 0 0 rgb(20 184 166);
+}
+
+.recommendedRow:hover {
+  background: linear-gradient(90deg, rgb(20 184 166 / 0.17), rgb(39 39 42 / 0.58));
+}
+
+.matchNo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.matchNo span {
+  color: rgb(250 250 250);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.matchNo small {
+  color: rgb(113 113 122);
+  font-size: 0.72rem;
+}
+
+.teams {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 15rem;
+}
+
+.teams strong {
+  color: rgb(250 250 250);
+  font-weight: 650;
+}
+
+.teams span {
+  color: rgb(113 113 122);
+  font-size: 0.75rem;
+}
+
+.matchLink {
+  color: rgb(250 250 250);
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.scorePill,
+.recommend,
+.neutral,
+.betType {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3rem;
+  min-height: 1.625rem;
+  border-radius: 0.5rem;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.scoreCell {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+}
+
+.scoreCell small {
+  color: rgb(113 113 122);
+  font-size: 0.68rem;
+  font-weight: 650;
+}
+
+.scoreElite {
+  border: 1px solid rgb(20 184 166 / 0.5);
+  background: rgb(20 184 166 / 0.18);
+  color: rgb(153 246 228);
+}
+
+.scoreStrong {
+  border: 1px solid rgb(217 119 6 / 0.48);
+  background: rgb(217 119 6 / 0.14);
+  color: rgb(253 230 138);
+}
+
+.scoreWatch {
+  border: 1px solid rgb(99 102 241 / 0.45);
+  background: rgb(99 102 241 / 0.15);
+  color: rgb(199 210 254);
+}
+
+.scoreMuted {
+  border: 1px solid rgb(82 82 91);
+  background: rgb(39 39 42);
+  color: rgb(212 212 216);
+}
+
+.recommend {
+  border: 1px solid rgb(20 184 166 / 0.5);
+  background: rgb(20 184 166 / 0.16);
+  color: rgb(153 246 228);
+}
+
+.neutral {
+  border: 1px solid rgb(82 82 91);
+  background: rgb(39 39 42);
+  color: rgb(161 161 170);
+}
+
+.betType {
+  border: 1px solid rgb(217 119 6 / 0.45);
+  background: rgb(120 53 15 / 0.24);
+  color: rgb(253 230 138);
+}
+
+.emptyState {
+  border: 1px solid rgb(39 39 42);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  text-align: center;
+  color: rgb(161 161 170);
+  background: rgb(18 18 20 / 0.86);
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 50;
+  background: rgb(0 0 0 / 0.68);
+  backdrop-filter: blur(8px);
+}
+
+.drawer {
+  width: 520px;
+  max-width: 94vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow-y: auto;
+  border-left: 1px solid rgb(63 63 70);
+  padding: 1.25rem;
+  background: rgb(18 18 20);
+  box-shadow: -24px 0 70px rgb(0 0 0 / 0.36);
+}
+
+.drawerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close {
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid rgb(63 63 70);
+  border-radius: 0.5rem;
+  background: rgb(24 24 27);
+  color: rgb(212 212 216);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.close:hover {
+  background: rgb(39 39 42);
+  color: rgb(250 250 250);
+}
+
+.metaGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.metaGrid > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  border: 1px solid rgb(63 63 70);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  background: rgb(9 9 11);
+}
+
+.metaGrid span {
+  color: rgb(161 161 170);
+  font-size: 0.75rem;
+}
+
+.metaGrid strong {
+  color: rgb(250 250 250);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.ruleExplain {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  border: 1px solid rgb(20 184 166 / 0.42);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  background: rgb(15 118 110 / 0.14);
+}
+
+.ruleExplain strong {
+  color: rgb(153 246 228);
+  font-size: 0.85rem;
+}
+
+.ruleExplain span {
+  color: rgb(212 212 216);
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
+.breakdownList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.breakdownItem {
+  border: 1px solid rgb(63 63 70);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  background: rgb(24 24 27 / 0.68);
+}
+
+.dimLine {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  color: rgb(244 244 245);
+  font-weight: 650;
+}
+
+.dimLine span:last-child {
+  color: rgb(253 230 138);
+}
+
+.dimExplain {
+  font-size: 0.75rem;
+  color: rgb(161 161 170);
+}
+
+.scoreTrack {
+  height: 0.375rem;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 9999px;
+  background: rgb(39 39 42);
+}
+
+.scoreFill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, rgb(217 119 6), rgb(20 184 166));
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border-top: 1px solid rgb(63 63 70);
+  padding-top: 1rem;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.8rem;
+  color: rgb(161 161 170);
+}
+
+.textarea {
+  min-height: 5rem;
+  resize: vertical;
+}
+
+.checkboxRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.375rem;
+}
+
+.errorBanner {
+  border: 1px solid rgb(220 38 38 / 0.72);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: rgb(127 29 29 / 0.28);
+  color: rgb(254 202 202);
+  font-size: 0.875rem;
+}
+
+@media (max-width: 980px) {
+  .hero,
+  .comboPanel,
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .comboPanel {
+    display: flex;
+  }
+
+  .comboGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .metrics {
+    min-width: 0;
+  }
+
+  .controls {
+    align-items: stretch;
+  }
+
+  .input,
+  .dateControl,
+  .button,
+  .buttonPrimary {
+    width: 100%;
+  }
+
+  .tableShell {
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0.75rem;
+  }
+
+  .metrics,
+  .metaGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+}

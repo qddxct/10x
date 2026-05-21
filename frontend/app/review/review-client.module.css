@@ -1,0 +1,243 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  min-height: calc(100vh - 3.5rem);
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.subtitle {
+  font-size: 0.875rem;
+  color: rgb(161 161 170);
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.85rem;
+}
+
+.input,
+.select {
+  background: rgb(9 9 11);
+  border: 1px solid rgb(63 63 70);
+  border-radius: 0.5rem;
+  padding: 0.375rem 0.55rem;
+  color: inherit;
+  font-size: 0.85rem;
+}
+
+.checkbox {
+  display: inline-flex;
+  gap: 0.35rem;
+  align-items: center;
+}
+
+.summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgb(63 63 70);
+  background: rgb(24 24 27 / 0.82);
+  border-radius: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.summaryItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.summaryLabel {
+  color: rgb(161 161 170);
+  font-size: 0.75rem;
+}
+
+.summaryValue {
+  font-weight: 600;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.table th,
+.table td {
+  border-bottom: 1px solid rgb(39 39 42);
+  padding: 0.55rem 0.55rem;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.tableInput {
+  composes: input;
+  width: 100%;
+  min-width: 4rem;
+}
+
+.dateCell,
+.modelCell,
+.pickCell,
+.hitCell {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.dateCell span {
+  color: rgb(244 244 245);
+}
+
+.dateCell small,
+.modelCell small,
+.pickCell small,
+.hitCell small {
+  color: rgb(113 113 122);
+  font-size: 0.7rem;
+  white-space: nowrap;
+}
+
+.modelCell span {
+  color: rgb(244 244 245);
+  font-size: 0.78rem;
+  font-weight: 650;
+  max-width: 12rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.matchLink {
+  color: rgb(250 250 250);
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.matchLink:hover {
+  color: rgb(153 246 228);
+  text-decoration: underline;
+  text-underline-offset: 0.18rem;
+}
+
+.scoreButton {
+  min-width: 2.75rem;
+  min-height: 1.6rem;
+  border: 1px solid rgb(20 184 166 / 0.42);
+  border-radius: 0.45rem;
+  padding: 0.1rem 0.45rem;
+  background: rgb(15 118 110 / 0.16);
+  color: rgb(153 246 228);
+  font-size: 0.78rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.scoreButton:hover {
+  border-color: rgb(20 184 166 / 0.72);
+  background: rgb(15 118 110 / 0.28);
+}
+
+.pickStrong,
+.pickMuted {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-width: 2.5rem;
+  min-height: 1.45rem;
+  border-radius: 0.45rem;
+  padding: 0.1rem 0.45rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.pickStrong {
+  border: 1px solid rgb(217 119 6 / 0.45);
+  background: rgb(120 53 15 / 0.24);
+  color: rgb(253 230 138);
+}
+
+.pickMuted {
+  border: 1px solid rgb(82 82 91);
+  background: rgb(39 39 42);
+  color: rgb(161 161 170);
+}
+
+.hitBadge {
+  display: inline-flex;
+  padding: 0.15rem 0.55rem;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+}
+
+.hitYes {
+  composes: hitBadge;
+  background: rgb(20 184 166 / 0.18);
+  color: rgb(153 246 228);
+}
+
+.hitNo {
+  composes: hitBadge;
+  background: rgb(153 27 27 / 0.25);
+  color: rgb(252 165 165);
+}
+
+.hitNull {
+  composes: hitBadge;
+  background: rgb(39 39 42);
+  color: rgb(161 161 170);
+}
+
+.button {
+  border: 1px solid rgb(63 63 70);
+  background: rgb(39 39 42);
+  color: inherit;
+  border-radius: 0.5rem;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: rgb(63 63 70);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.errorBanner {
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  background: rgb(153 27 27 / 0.2);
+  border: 1px solid rgb(220 38 38);
+  color: rgb(252 165 165);
+  font-size: 0.85rem;
+}
+
+.empty {
+  padding: 2rem;
+  text-align: center;
+  color: rgb(161 161 170);
+}
