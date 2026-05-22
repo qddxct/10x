@@ -4,6 +4,7 @@ from fastapi.responses import RedirectResponse
 
 from app.api.auth import router as auth_router
 from app.api.backtest import router as backtest_router
+from app.api.combo_recommendations import router as combo_recommendations_router
 from app.api.health import router as health_router
 from app.api.model_config import router as model_config_router
 from app.api.research import router as research_router
@@ -11,6 +12,7 @@ from app.api.reviews import router as reviews_router
 from app.api.scores import router as scores_router
 from app.api.scrape import router as scrape_router
 from app.api.users import router as users_router
+from app.api.total_goals import router as total_goals_router
 from app.core.config import get_settings
 
 settings = get_settings()
@@ -31,6 +33,8 @@ app.include_router(users_router, prefix="/api/users")
 app.include_router(scrape_router, prefix="/api/scrape")
 app.include_router(scores_router, prefix="/api/scores")
 app.include_router(backtest_router, prefix="/api/backtest")
+app.include_router(combo_recommendations_router, prefix="/api/combo-recommendations")
+app.include_router(total_goals_router, prefix="/api/total-goals")
 app.include_router(model_config_router, prefix="/api/model-configs")
 app.include_router(reviews_router, prefix="/api/reviews")
 app.include_router(research_router, prefix="/api/research")

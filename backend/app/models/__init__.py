@@ -1,5 +1,6 @@
 from app.models.backtest import BacktestSession
 from app.models.base import Base, TimestampMixin
+from app.models.combo_recommendation import ComboRecommendation
 from app.models.league import League
 from app.models.match import SportteryMatch
 from app.models.match_id import (
@@ -18,6 +19,7 @@ from app.models.research import ModelResearchArtifact, ModelResearchRun
 from app.models.score import SportteryMatchScore
 from app.models.scrape_log import ScrapeLog
 from app.models.team_stats import SportteryMatchTeamStats
+from app.models.total_goals import TotalGoalRecommendation
 from app.models.user import User
 
 # Backwards-compatible aliases for tests and older code paths that predate the
@@ -32,12 +34,14 @@ __all__ = [
     "Base",
     "TimestampMixin",
     "BacktestSession",
+    "ComboRecommendation",
     "League",
     "SportteryMatch",
     "SportteryMatchOdds",
     "SportteryMatchResult",
     "SportteryMatchScore",
     "SportteryMatchTeamStats",
+    "TotalGoalRecommendation",
     "Match",
     "MatchOdds",
     "MatchResult",

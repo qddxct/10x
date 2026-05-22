@@ -89,6 +89,61 @@ const WEIGHT_GUIDE: Record<
   }
 }
 
+const DEFAULT_SCORE_RULES = [
+  {
+    title: '欧赔结构',
+    max: 25,
+    lines: [
+      '胜/负 2.30-2.80 且平赔 3.00-3.40：25分',
+      '三项赔率越接近越高：离散≤10% 得25，≤20% 得18，≤35% 得10，≤60% 得5',
+      '赔率缺失或结构过散：0分'
+    ]
+  },
+  {
+    title: '亚盘深浅',
+    max: 20,
+    lines: [
+      '平手盘：20分',
+      '平半盘：15-18分',
+      '半球：12分左右；一球：8分；一球半以上：3分或更低',
+      '盘口越浅，越认为双方接近，更利于平局判断'
+    ]
+  },
+  {
+    title: '进球预期',
+    max: 20,
+    lines: [
+      '大小球≤2.25：20分',
+      '大小球 2.5 附近：10分',
+      '大小球≥2.75：0分',
+      '没有大小球时，用平赔≤3.20 和浅盘口各补10分'
+    ]
+  },
+  {
+    title: '战意场景',
+    max: 15,
+    lines: [
+      '杯赛、淘汰赛、首回合/次回合：15分',
+      '普通联赛：5分',
+      '这个维度表达比赛情境对保守或搏命倾向的影响'
+    ]
+  },
+  {
+    title: '平赔压缩',
+    max: 20,
+    lines: ['平赔≤3.20：20分', '平赔 3.20-3.60：10分', '平赔≥3.60 或缺失：0分']
+  },
+  {
+    title: '球队状态',
+    max: 20,
+    lines: [
+      '排名差≤2 加8分，≤5 加6分，≤10 加3分',
+      '近期战绩越均衡、平局越多，分数越高',
+      '主客两队赛季平局率越高，最高再加4分'
+    ]
+  }
+]
+
 const THRESHOLD_KEYS = [
   'min_total_score',
   'recommend_total_score',
@@ -502,6 +557,29 @@ export function ModelClient() {
                     : '这个模型把 6 个维度按权重相加，总分达到阈值后才会推荐。适合做可解释的基础评分。'}
                 </span>
               </div>
+              {!isRuleModel && (
+                <div className={styles.rulePanel}>
+                  <div className={styles.rulePanelHeader}>
+                    <strong>default 打分规则</strong>
+                    <span>总分 = 6 个维度得分按当前权重折算后相加，满分通常按 120 理解。</span>
+                  </div>
+                  <div className={styles.ruleGrid}>
+                    {DEFAULT_SCORE_RULES.map((rule) => (
+                      <div key={rule.title} className={styles.ruleCard}>
+                        <div className={styles.ruleCardTitle}>
+                          <span>{rule.title}</span>
+                          <b>{rule.max}分</b>
+                        </div>
+                        <ul>
+                          {rule.lines.map((line) => (
+                            <li key={line}>{line}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
               <div className={styles.grid}>
                 <label className={styles.field}>
                   名称

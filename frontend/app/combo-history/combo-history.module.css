@@ -1,0 +1,353 @@
+.container {
+  min-height: calc(100vh - 3.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.25rem;
+  background:
+    linear-gradient(180deg, rgb(12 13 15) 0%, rgb(18 18 20) 42%, rgb(10 10 11) 100%);
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 1rem;
+  border: 1px solid rgb(63 63 70);
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  background:
+    linear-gradient(135deg, rgb(24 24 27 / 0.96), rgb(16 16 18 / 0.98)),
+    linear-gradient(90deg, rgb(245 158 11 / 0.18), rgb(20 184 166 / 0.1));
+  box-shadow: 0 18px 60px rgb(0 0 0 / 0.28);
+}
+
+.kicker {
+  color: rgb(20 184 166);
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin: 0.25rem 0;
+  color: rgb(250 250 250);
+  font-size: 1.875rem;
+  line-height: 1.1;
+}
+
+.hero p {
+  max-width: 48rem;
+  margin: 0;
+  color: rgb(161 161 170);
+  font-size: 0.875rem;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(5.75rem, 1fr));
+  gap: 0.625rem;
+  min-width: min(32rem, 100%);
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5rem;
+  border: 1px solid rgb(82 82 91);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  background: rgb(9 9 11 / 0.56);
+}
+
+.metric span {
+  color: rgb(161 161 170);
+  font-size: 0.75rem;
+}
+
+.metric strong {
+  color: rgb(250 250 250);
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border: 1px solid rgb(39 39 42);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  background: rgb(24 24 27 / 0.84);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.input,
+.button,
+.buttonPrimary {
+  min-height: 2.25rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.input {
+  min-width: 16rem;
+  border: 1px solid rgb(63 63 70);
+  padding: 0 0.75rem;
+  background: rgb(9 9 11);
+  color: rgb(244 244 245);
+}
+
+.button,
+.buttonPrimary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  border: 1px solid rgb(63 63 70);
+  padding: 0 0.875rem;
+  background: rgb(39 39 42);
+  color: rgb(244 244 245);
+  cursor: pointer;
+}
+
+.buttonPrimary {
+  border-color: rgb(217 119 6 / 0.5);
+  background: rgb(120 53 15 / 0.42);
+  color: rgb(253 230 138);
+}
+
+.button:disabled,
+.buttonPrimary:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.historyPanel {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.875rem;
+}
+
+.historyCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  border: 1px solid rgb(63 63 70);
+  border-radius: 0.5rem;
+  padding: 0.875rem;
+  background: rgb(18 18 20 / 0.94);
+}
+
+.historyTopline {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+  border-bottom: 1px solid rgb(39 39 42);
+  padding-bottom: 0.75rem;
+}
+
+.historyDate {
+  color: rgb(250 250 250);
+  font-size: 0.92rem;
+  font-weight: 750;
+}
+
+.historyModel {
+  margin-top: 0.2rem;
+  color: rgb(161 161 170);
+  font-size: 0.74rem;
+}
+
+.historySignal {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.35rem;
+}
+
+.historySignal strong {
+  color: rgb(153 246 228);
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+
+.historyWon,
+.historyLost,
+.historyPending {
+  display: inline-flex;
+  justify-content: center;
+  min-width: 4rem;
+  border-radius: 0.45rem;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.historyWon {
+  border: 1px solid rgb(20 184 166 / 0.5);
+  background: rgb(20 184 166 / 0.16);
+  color: rgb(153 246 228);
+}
+
+.historyLost {
+  border: 1px solid rgb(220 38 38 / 0.5);
+  background: rgb(127 29 29 / 0.22);
+  color: rgb(254 202 202);
+}
+
+.historyPending {
+  border: 1px solid rgb(82 82 91);
+  background: rgb(39 39 42);
+  color: rgb(212 212 216);
+}
+
+.historyLegs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.historyLeg {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.matchLink,
+.historyLeg strong {
+  display: block;
+  width: fit-content;
+  color: rgb(250 250 250);
+  font-size: 0.86rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.matchLink:hover {
+  color: rgb(153 246 228);
+  text-decoration: underline;
+  text-underline-offset: 0.18rem;
+}
+
+.historyLeg span {
+  display: block;
+  margin-top: 0.15rem;
+  color: rgb(161 161 170);
+  font-size: 0.72rem;
+}
+
+.historyLegSignal {
+  display: flex;
+  gap: 0.35rem;
+  align-items: center;
+}
+
+.historyLegSignal span,
+.historyLegSignal em,
+.historyLegSignal b,
+.historyLegSignal strong {
+  min-width: 2.6rem;
+  border-radius: 0.42rem;
+  padding: 0.18rem 0.38rem;
+  text-align: center;
+  font-size: 0.72rem;
+  font-style: normal;
+  white-space: nowrap;
+}
+
+.historyLegSignal span {
+  border: 1px solid rgb(217 119 6 / 0.42);
+  background: rgb(120 53 15 / 0.22);
+  color: rgb(253 230 138);
+}
+
+.historyLegSignal em {
+  border: 1px solid rgb(20 184 166 / 0.44);
+  background: rgb(15 118 110 / 0.18);
+  color: rgb(153 246 228);
+}
+
+.historyLegSignal b {
+  border: 1px solid rgb(82 82 91);
+  background: rgb(39 39 42);
+  color: rgb(244 244 245);
+  font-weight: 700;
+}
+
+.historyLegSignal strong {
+  border: 1px solid rgb(63 63 70);
+  background: rgb(24 24 27);
+  color: rgb(212 212 216);
+}
+
+.emptyState {
+  border: 1px solid rgb(39 39 42);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  text-align: center;
+  color: rgb(161 161 170);
+  background: rgb(18 18 20 / 0.86);
+}
+
+.errorBanner {
+  border: 1px solid rgb(220 38 38 / 0.72);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: rgb(127 29 29 / 0.28);
+  color: rgb(254 202 202);
+  font-size: 0.875rem;
+}
+
+@media (max-width: 980px) {
+  .hero,
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .metrics,
+  .historyPanel {
+    grid-template-columns: 1fr;
+  }
+
+  .actions,
+  .input,
+  .button,
+  .buttonPrimary {
+    width: 100%;
+  }
+
+  .historyTopline,
+  .historyLeg {
+    grid-template-columns: 1fr;
+  }
+
+  .historyTopline,
+  .historySignal {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0.75rem;
+  }
+
+  .metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+}

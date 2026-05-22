@@ -15,6 +15,12 @@ export function SiteHeader() {
         <Link href="/dashboard" className="text-sm text-zinc-400 transition hover:text-amber-200">
           今日推荐
         </Link>
+        <Link href="/combo-history" className="text-sm text-zinc-400 transition hover:text-amber-200">
+          往日推荐
+        </Link>
+        <Link href="/total-goals" className="text-sm text-zinc-400 transition hover:text-amber-200">
+          总进球数
+        </Link>
         <Link href="/backtest" className="text-sm text-zinc-400 transition hover:text-amber-200">
           回测
         </Link>

@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { CalendarDays, Calculator, RefreshCw } from 'lucide-react'
 
 import { ReviewClient } from '@/app/review/review-client'
+import { snapshotTodayCombos } from '@/lib/combo-recommendations/api'
 import { listModelConfigs } from '@/lib/model-config/api'
 import type { ModelConfig } from '@/lib/model-config/types'
 import { computeScores, computeUpcomingScores, getScoresByDate, getTodayScores } from '@/lib/scores/api'
@@ -196,6 +197,13 @@ export function DashboardClient() {
             ? await getTodayScores(cfgId ?? undefined)
             : await getScoresByDate(target, cfgId ?? undefined)
         setItems(res.items)
+        if (scope === 'upcoming' && res.items.filter((s) => s.bet_type != null).length >= 2) {
+          try {
+            await snapshotTodayCombos(cfgId ?? undefined)
+          } catch {
+            // Snapshot is a convenience write; reading recommendations should still work.
+          }
+        }
         setError(null)
       } catch (e) {
         setError((e as Error).message)
@@ -344,7 +352,7 @@ export function DashboardClient() {
             aria-selected={tab === 'upcoming'}
             onClick={() => setTab('upcoming')}
           >
-            未开始 / 进行中
+            今日推荐
           </button>
           <button
             className={tab === 'finished' ? styles.tabActive : styles.tab}
@@ -400,7 +408,12 @@ export function DashboardClient() {
             <Calculator size={16} aria-hidden="true" />
             {computing ? '计算中…' : '立即计算'}
           </button>
-          <button className={styles.button} onClick={() => void load(date, effectiveConfigId, scoreScope)}>
+          <button
+            className={styles.button}
+            onClick={() => {
+              void load(date, effectiveConfigId, scoreScope)
+            }}
+          >
             <RefreshCw size={16} aria-hidden="true" />
             刷新
           </button>

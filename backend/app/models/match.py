@@ -106,6 +106,30 @@ class SportteryMatch (Base, TimestampMixin):
     hhad_goal_line: Mapped[Decimal | None] = mapped_column(
         DECIMAL(4, 1), nullable=True, comment="竞彩让球数(如 -1, +1, -0.5)",
     )
+    ttg_0: Mapped[Decimal | None] = mapped_column(
+        DECIMAL(6, 3), nullable=True, comment="竞彩总进球数 0 球赔率",
+    )
+    ttg_1: Mapped[Decimal | None] = mapped_column(
+        DECIMAL(6, 3), nullable=True, comment="竞彩总进球数 1 球赔率",
+    )
+    ttg_2: Mapped[Decimal | None] = mapped_column(
+        DECIMAL(6, 3), nullable=True, comment="竞彩总进球数 2 球赔率",
+    )
+    ttg_3: Mapped[Decimal | None] = mapped_column(
+        DECIMAL(6, 3), nullable=True, comment="竞彩总进球数 3 球赔率",
+    )
+    ttg_4: Mapped[Decimal | None] = mapped_column(
+        DECIMAL(6, 3), nullable=True, comment="竞彩总进球数 4 球赔率",
+    )
+    ttg_5: Mapped[Decimal | None] = mapped_column(
+        DECIMAL(6, 3), nullable=True, comment="竞彩总进球数 5 球赔率",
+    )
+    ttg_6: Mapped[Decimal | None] = mapped_column(
+        DECIMAL(6, 3), nullable=True, comment="竞彩总进球数 6 球赔率",
+    )
+    ttg_7: Mapped[Decimal | None] = mapped_column(
+        DECIMAL(6, 3), nullable=True, comment="竞彩总进球数 7+ 球赔率",
+    )
 
     league: Mapped[League] = relationship(back_populates="matches")
     odds: Mapped[list[SportteryMatchOdds]] = relationship(

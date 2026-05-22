@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 
 SCHEDULE_API = (
   "https://webapi.sporttery.cn/gateway/uniform/football/"
-  "getMatchCalculatorV1.qry?channel=c&poolCode=hhad,had"
+  "getMatchCalculatorV1.qry?channel=c&poolCode=hhad,had,ttg"
 )
 
 
@@ -68,6 +68,7 @@ def parse_schedule_api(payload: dict) -> list[dict]:
 
       had = m.get('had') or {}
       hhad = m.get('hhad') or {}
+      ttg = m.get('ttg') or {}
 
       rows.append({
         'sporttery_match_id': str(mid),
@@ -83,6 +84,14 @@ def parse_schedule_api(payload: dict) -> list[dict]:
         'hhad_d': _dec(hhad.get('d')),
         'hhad_a': _dec(hhad.get('a')),
         'hhad_goal_line': _dec(hhad.get('goalLine')),
+        'ttg_0': _dec(ttg.get('s0') or ttg.get('0')),
+        'ttg_1': _dec(ttg.get('s1') or ttg.get('1')),
+        'ttg_2': _dec(ttg.get('s2') or ttg.get('2')),
+        'ttg_3': _dec(ttg.get('s3') or ttg.get('3')),
+        'ttg_4': _dec(ttg.get('s4') or ttg.get('4')),
+        'ttg_5': _dec(ttg.get('s5') or ttg.get('5')),
+        'ttg_6': _dec(ttg.get('s6') or ttg.get('6')),
+        'ttg_7': _dec(ttg.get('s7') or ttg.get('7')),
       })
 
   return rows
@@ -157,6 +166,14 @@ class SportterySchedule(Scraper):
           hhad_d=row['hhad_d'],
           hhad_a=row['hhad_a'],
           hhad_goal_line=row['hhad_goal_line'],
+          ttg_0=row['ttg_0'],
+          ttg_1=row['ttg_1'],
+          ttg_2=row['ttg_2'],
+          ttg_3=row['ttg_3'],
+          ttg_4=row['ttg_4'],
+          ttg_5=row['ttg_5'],
+          ttg_6=row['ttg_6'],
+          ttg_7=row['ttg_7'],
         )
         self._db.add(match)
         self._db.flush()
@@ -174,6 +191,14 @@ class SportterySchedule(Scraper):
         match.hhad_d = row['hhad_d']
         match.hhad_a = row['hhad_a']
         match.hhad_goal_line = row['hhad_goal_line']
+        match.ttg_0 = row['ttg_0']
+        match.ttg_1 = row['ttg_1']
+        match.ttg_2 = row['ttg_2']
+        match.ttg_3 = row['ttg_3']
+        match.ttg_4 = row['ttg_4']
+        match.ttg_5 = row['ttg_5']
+        match.ttg_6 = row['ttg_6']
+        match.ttg_7 = row['ttg_7']
 
       count += 1
 
