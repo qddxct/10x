@@ -58,8 +58,6 @@ def _bet_odds(score: SportteryMatchScore, match: SportteryMatch) -> Decimal | No
 def _handicap_result(match: SportteryMatch, result: SportteryMatchResult | None) -> str | None:
     if result is None:
         return None
-    if result.handicap_result is not None:
-        return result.handicap_result
     if match.hhad_goal_line is None:
         return None
     adjusted_home = float(result.home_score) + float(match.hhad_goal_line)
@@ -74,7 +72,7 @@ def _leg_hit(score: SportteryMatchScore, match: SportteryMatch, result: Sportter
     if result is None or score.bet_type is None:
         return None
     if score.bet_type == "draw":
-        return result.result == "draw"
+        return result.home_score == result.away_score
     if score.bet_type == "handicap_draw":
         return _handicap_result(match, result) == "draw"
     return None

@@ -3,7 +3,9 @@ from __future__ import annotations
 from decimal import Decimal
 from typing import TYPE_CHECKING
 
-from sqlalchemy import BigInteger, Boolean, DECIMAL, ForeignKey, Integer, JSON, String, UniqueConstraint
+from datetime import date
+
+from sqlalchemy import BigInteger, Boolean, DECIMAL, Date, ForeignKey, Integer, JSON, String, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.models.base import Base, TimestampMixin
@@ -41,3 +43,28 @@ class TotalGoalRecommendation(Base, TimestampMixin):
     explanation_json: Mapped[dict | None] = mapped_column(JSON, nullable=True)
 
     match: Mapped[SportteryMatch] = relationship()
+
+
+class TotalGoalComboRecommendation(Base, TimestampMixin):
+    """总进球数 2串1 推荐快照."""
+
+    __tablename__ = "total_goal_combo_recommendations"
+    __table_args__ = (
+        UniqueConstraint(
+            "recommendation_date",
+            "rank",
+            "model_version",
+            name="uq_total_goal_combo_recommendations_date_rank_version",
+        ),
+        {"comment": "总进球数 2串1 推荐快照"},
+    )
+
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+    recommendation_date: Mapped[date] = mapped_column(Date, nullable=False, index=True)
+    rank: Mapped[int] = mapped_column(Integer, nullable=False)
+    title: Mapped[str] = mapped_column(String(32), nullable=False)
+    model_version: Mapped[str] = mapped_column(String(32), nullable=False, default="tg-v1")
+    combo_odds: Mapped[Decimal | None] = mapped_column(DECIMAL(10, 3), nullable=True)
+    combo_odds_label: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    avg_score: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    legs_json: Mapped[list[dict]] = mapped_column(JSON, nullable=False)

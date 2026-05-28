@@ -21,6 +21,9 @@ export function SiteHeader() {
         <Link href="/total-goals" className="text-sm text-zinc-400 transition hover:text-amber-200">
           总进球数
         </Link>
+        <Link href="/total-goals-history" className="text-sm text-zinc-400 transition hover:text-amber-200">
+          总进球往日推荐
+        </Link>
         <Link href="/backtest" className="text-sm text-zinc-400 transition hover:text-amber-200">
           回测
         </Link>

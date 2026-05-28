@@ -37,9 +37,17 @@ export interface TotalGoalCombo {
   title: string
   items: TotalGoalItem[]
   combo_odds: string | number | null
+  combo_odds_label: string | null
   avg_score: number
   status: 'pending' | 'won' | 'lost'
   hit: boolean | null
+}
+
+export interface TotalGoalComboHistoryItem extends TotalGoalCombo {
+  id: number
+  recommendation_date: string
+  model_version: string
+  created_at: string
 }
 
 export interface TotalGoalTodayResponse {
@@ -51,6 +59,17 @@ export interface TotalGoalTodayResponse {
 export interface TotalGoalListResponse {
   items: TotalGoalItem[]
   total: number
+}
+
+export interface TotalGoalComboHistoryResponse {
+  items: TotalGoalComboHistoryItem[]
+  total: number
+}
+
+export interface TotalGoalComboSnapshotResult {
+  recommendation_date: string
+  created: number
+  items: TotalGoalComboHistoryItem[]
 }
 
 export interface TotalGoalComputeResult {

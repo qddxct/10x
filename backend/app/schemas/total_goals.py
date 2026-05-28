@@ -42,9 +42,28 @@ class TotalGoalCombo(BaseModel):
     title: str
     items: list[TotalGoalOut]
     combo_odds: Decimal | None = None
+    combo_odds_label: str | None = None
     avg_score: int
     status: str
     hit: bool | None = None
+
+
+class TotalGoalComboHistoryItem(TotalGoalCombo):
+    id: int
+    recommendation_date: date
+    model_version: str
+    created_at: datetime
+
+
+class TotalGoalComboHistoryResponse(BaseModel):
+    items: list[TotalGoalComboHistoryItem]
+    total: int
+
+
+class TotalGoalComboSnapshotResult(BaseModel):
+    recommendation_date: date
+    created: int
+    items: list[TotalGoalComboHistoryItem]
 
 
 class TotalGoalTodayResponse(BaseModel):

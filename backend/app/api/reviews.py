@@ -31,8 +31,6 @@ def _computed_handicap_result(
 ) -> str | None:
     if result is None:
         return None
-    if result.handicap_result is not None:
-        return result.handicap_result
     if match.hhad_goal_line is None:
         return None
 
@@ -55,7 +53,7 @@ def _suggested_hit(
     if result is None or score.bet_type is None:
         return None
     if score.bet_type == "draw":
-        return result.result == "draw"
+        return result.home_score == result.away_score
     if score.bet_type == "handicap_draw":
         return _computed_handicap_result(match, result) == "draw"
     return None

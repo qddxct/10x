@@ -1,6 +1,8 @@
 import { apiFetch } from '@/lib/auth/api'
 
 import type {
+  TotalGoalComboHistoryResponse,
+  TotalGoalComboSnapshotResult,
   TotalGoalComputeResult,
   TotalGoalListResponse,
   TotalGoalTodayResponse
@@ -8,6 +10,16 @@ import type {
 
 export async function getTodayTotalGoals(): Promise<TotalGoalTodayResponse> {
   return apiFetch<TotalGoalTodayResponse>('/api/total-goals/today')
+}
+
+export async function snapshotTodayTotalGoalCombos(): Promise<TotalGoalComboSnapshotResult> {
+  return apiFetch<TotalGoalComboSnapshotResult>('/api/total-goals/snapshot-today', {
+    method: 'POST'
+  })
+}
+
+export async function listTotalGoalComboHistory(limit = 50): Promise<TotalGoalComboHistoryResponse> {
+  return apiFetch<TotalGoalComboHistoryResponse>(`/api/total-goals/history?limit=${limit}`)
 }
 
 export async function getTotalGoalsByDate(date: string): Promise<TotalGoalListResponse> {

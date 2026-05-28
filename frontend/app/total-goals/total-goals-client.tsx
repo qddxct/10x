@@ -7,7 +7,8 @@ import {
   computeTotalGoals,
   computeUpcomingTotalGoals,
   getTodayTotalGoals,
-  getTotalGoalsByDate
+  getTotalGoalsByDate,
+  snapshotTodayTotalGoalCombos
 } from '@/lib/total-goals/api'
 import type { TotalGoalCombo, TotalGoalItem } from '@/lib/total-goals/types'
 
@@ -64,6 +65,10 @@ function comboStatusText(combo: TotalGoalCombo): string {
   return '待开奖'
 }
 
+function comboOddsText(combo: TotalGoalCombo): string {
+  return combo.combo_odds_label || formatDecimal(combo.combo_odds)
+}
+
 function MatchLink({ item }: { item: TotalGoalItem }) {
   const label = `${item.home_team ?? '-'} vs ${item.away_team ?? '-'}`
   if (!item.sporttery_url) return <strong>{label}</strong>
@@ -105,6 +110,13 @@ export function TotalGoalsClient() {
         const res = await getTodayTotalGoals()
         setItems(res.items)
         setCombos(res.combos)
+        if (res.combos.length > 0) {
+          try {
+            await snapshotTodayTotalGoalCombos()
+          } catch {
+            // Snapshot is a convenience write; live recommendations can still render.
+          }
+        }
       } else {
         const res = await getTotalGoalsByDate(targetDate)
         setItems(res.items)
@@ -184,7 +196,7 @@ export function TotalGoalsClient() {
                 <article key={combo.title} className={styles.comboCard}>
                   <div className={styles.comboTopline}>
                     <span>{combo.title}</span>
-                    <strong>总赔率 {formatDecimal(combo.combo_odds)}</strong>
+                    <strong>折算赔率范围 {comboOddsText(combo)}</strong>
                   </div>
                   <div className={styles.comboMeta}>
                     <span>均分 {combo.avg_score}</span>

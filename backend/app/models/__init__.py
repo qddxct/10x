@@ -19,7 +19,7 @@ from app.models.research import ModelResearchArtifact, ModelResearchRun
 from app.models.score import SportteryMatchScore
 from app.models.scrape_log import ScrapeLog
 from app.models.team_stats import SportteryMatchTeamStats
-from app.models.total_goals import TotalGoalRecommendation
+from app.models.total_goals import TotalGoalComboRecommendation, TotalGoalRecommendation
 from app.models.user import User
 
 # Backwards-compatible aliases for tests and older code paths that predate the
@@ -42,6 +42,7 @@ __all__ = [
     "SportteryMatchScore",
     "SportteryMatchTeamStats",
     "TotalGoalRecommendation",
+    "TotalGoalComboRecommendation",
     "Match",
     "MatchOdds",
     "MatchResult",
